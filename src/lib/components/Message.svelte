@@ -16,7 +16,7 @@
 	<div class="chat-header">
 		{type === 'user' ? 'Me' : 'Chad'}
 	</div>
-	<div class="-bubble">
+	<div class="-bubble bg-blue-700 p-2 rounded-2xl	">
 		{message}
 	</div>
 </div>
