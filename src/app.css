@@ -6,4 +6,9 @@
 html,
 body {
 	@apply h-full;
+	background-color: #1F2937;
+	color:white;
 }
+
+
+
