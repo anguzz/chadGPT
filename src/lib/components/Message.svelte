@@ -5,5 +5,6 @@
 </script>
 
 <div>
-	{'message goes here'}
+	<!--{'message goes here'} -->
+	
 </div>
