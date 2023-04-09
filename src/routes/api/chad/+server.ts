@@ -1,7 +1,7 @@
 import { OPENAI_KEY } from '$env/static/private';
 import type { CreateChatCompletionRequest, ChatCompletionRequestMessage } from 'openai';
 import type { RequestHandler } from './$types';
-import { getTokens } from '$lib/token';
+import { getTokens } from '../../../Token';
 import { json } from '@sveltejs/kit';
 import type { Config } from '@sveltejs/adapter-vercel';
 
