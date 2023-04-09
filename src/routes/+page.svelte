@@ -1,65 +1,65 @@
 <script lang="ts">
-	import ChatMessage from '$lib/components/Message.svelte'
-	import type { ChatCompletionRequestMessage } from 'openai'
-	import { SSE } from 'sse.js'
+  import ChatMessage from '$lib/components/Message.svelte';
+  import type { ChatCompletionRequestMessage } from 'openai';
+  import { SSE } from 'sse.js';
 
-	let query: string = ''
-	let answer: string = ''
-	let loading: boolean = false
-	let chatMessages: ChatCompletionRequestMessage[] = []
-	let scrollToDiv: HTMLDivElement
+  let query: string = '';
+  let answer: string = '';
+  let loading: boolean = false;
+  let chatMessages: ChatCompletionRequestMessage[] = [];
+  let scrollToDiv: HTMLDivElement;
 
-	function scrollToBottom() {
-		setTimeout(function () {
-			scrollToDiv.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
-		}, 100)
-	}
+  function scrollToBottom() {
+    setTimeout(function () {
+      scrollToDiv.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+    }, 100);
+  }
 
-	const handleSubmit = async () => {
-		loading = true
-		chatMessages = [...chatMessages, { role: 'user', content: query }]
+  const handleSubmit = async () => {
+    loading = true;
+    chatMessages = [...chatMessages, { role: 'user', content: query }];
 
-		const eventSource = new SSE('/api/chad', {
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			payload: JSON.stringify({ messages: chatMessages })
-		})
+    const eventSource = new SSE('/api/chad', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      payload: JSON.stringify({ messages: chatMessages })
+    });
 
-		query = ''
+    query = '';
 
-		eventSource.addEventListener('error', handleError)
+    eventSource.addEventListener('error', handleError);
 
-		eventSource.addEventListener('message', (e) => {
-			scrollToBottom()
-			try {
-				loading = false
-				if (e.data === '[DONE]') {
-					chatMessages = [...chatMessages, { role: 'assistant', content: answer }]
-					answer = ''
-					return
-				}
+    eventSource.addEventListener('message', (e) => {
+      scrollToBottom();
+      try {
+        loading = false;
+        if (e.data === '[DONE]') {
+          chatMessages = [...chatMessages, { role: 'assistant', content: answer }];
+          answer = '';
+          return;
+        }
 
-				const completionResponse = JSON.parse(e.data)
-				const [{ delta }] = completionResponse.choices
+        const completionResponse = JSON.parse(e.data);
+        const [{ delta }] = completionResponse.choices;
 
-				if (delta.content) {
-					answer = (answer ?? '') + delta.content
-				}
-			} catch (err) {
-				handleError(err)
-			}
-		})
-		eventSource.stream()
-		scrollToBottom()
-	}
+        if (delta.content) {
+          answer = (answer ?? '') + delta.content;
+        }
+      } catch (err) {
+        handleError(err);
+      }
+    });
+    eventSource.stream();
+    scrollToBottom();
+  };
 
-	function handleError<T>(err: T) {
-		loading = false
-		query = ''
-		answer = ''
-		console.error(err)
-	}
+  function handleError<T>(err: T) {
+    loading = false;
+    query = '';
+    answer = '';
+    console.error(err);
+  }
 </script>
 
 <div class="flex flex-col pt-4 w-full px-8 items-center gap-2">
