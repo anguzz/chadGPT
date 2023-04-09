@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Message from '../components/Message.svelte';
+	import Message from '../lib/components/Message.svelte';
     import type { ChatCompletionRequestMessage } from 'openai';
 
 </script>
