@@ -1,4 +1,4 @@
-declare module 'sse.ts' {
+declare module 'sse.js' {
 	export type SSEOptions = EventSourceInit & {
 		headers?: Record<string, string>
 		payload?: string

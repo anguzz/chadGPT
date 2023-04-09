@@ -1,4 +1,4 @@
-import GPT3TokenizerImport from 'gpt3-tokenizer';
+import GPT3TokenizerImport from 'gpt3-tokenizer'
 
 const GPT3Tokenizer: typeof GPT3TokenizerImport =
 	typeof GPT3TokenizerImport === 'function'
@@ -11,4 +11,3 @@ export function getTokens(input: string): number {
 	const tokens = tokenizer.encode(input)
 	return tokens.text.length
 }
-
