@@ -66,7 +66,7 @@
 	<div>
 		<h1 class="text-2xl font-bold w-full text-center">chadGPT</h1>
 	</div>
-	<div class="h-fit w-full bg-white rounded-md p-4 overflow-y-auto flex flex-col gap-4">
+	<div class="h-full w-full bg-white rounded-md p-4 overflow-y-auto flex flex-col gap-4">
 		<div class="flex flex-col gap-2">
 			<ChatMessage type="assistant" message="Hello, how's it going!" />
 			{#each chatMessages as message}
