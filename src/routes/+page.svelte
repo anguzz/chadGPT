@@ -19,7 +19,7 @@
 		loading = true
 		chatMessages = [...chatMessages, { role: 'user', content: query }]
 
-		const eventSource = new SSE('/api/chat', {
+		const eventSource = new SSE('/api/chad', {
 			headers: {
 				'Content-Type': 'application/json'
 			},
