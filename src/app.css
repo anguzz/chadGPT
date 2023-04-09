@@ -5,7 +5,8 @@
 
 html,
 body {
-	@apply h-full;
+	min-height: 50rem;
+	height:fit-content;
 	background-color: #1F2937;
 	color:white;
 }
