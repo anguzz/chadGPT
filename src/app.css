@@ -5,11 +5,16 @@
 
 html,
 body {
-	min-height: 45rem;
-	height:fit-content;
-	background-color: #1F2937;
+	background-color: #283f5e;
 	color:white;
 }
 
 
 
+html, body {
+	height: 100%;
+  }
+  
+  .full-height {
+	height: 100%;
+  }
