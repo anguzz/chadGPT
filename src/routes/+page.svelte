@@ -90,7 +90,7 @@
 
 <style>
  .chatwrapper{
-  height:48rem;
+  height:40rem;
   width: 100%;
 
 
