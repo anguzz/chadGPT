@@ -62,7 +62,9 @@
   }
 </script>
 
-	
+	<div>
+		<h1 class="text-2xl font-bold w-full text-center">chadGPT</h1>
+	</div>
 	<div class="chatwrapper  bg-white rounded-t-lg p-3 overflow-y-auto flex flex-col gap-4">
 		<div class="flex flex-col gap-2">
 			<ChatMessage type="assistant" message="Hello, how's it going!" />
