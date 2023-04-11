@@ -86,7 +86,7 @@
 		on:submit|preventDefault={() => handleSubmit()}
 	>
 		<input type="text" class="input input-bordered w-full bg-slate-800" bind:value={query} />
-		<button type="submit" class="btn bg-blue-700 hover:bg-slate-800 text-white"> ⬆️ </button>
+		<button type="submit" class="btn bg-blue-700 hover:bg-slate-800 text-white"> Send </button>
 	</form>
 
 <style>
