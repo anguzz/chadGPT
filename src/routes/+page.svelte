@@ -67,7 +67,7 @@
 	</div>
 	<div class="chatwrapper  bg-white rounded-t-lg p-3 overflow-y-auto flex flex-col gap-4">
 		<div class="flex flex-col gap-2">
-			<ChatMessage type="assistant" message="Hello, how's it going!" />
+			<ChatMessage type="assistant" message="Sup dude?" />
 			{#each chatMessages as message}
 				<ChatMessage type={message.role} message={message.content} />
 			{/each}
